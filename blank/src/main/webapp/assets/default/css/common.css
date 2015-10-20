@@ -1,0 +1,10 @@
+body, th, td, div, p, h1, h2, h3, h4, h5, h6, h7 {
+    font-family: 'ヒラギノ角ゴ ProN W3', 'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'Meiryo', 'メイリオ', sans-serif;
+}
+body, th, td, div, p {
+    font-size: 12px;
+}
+
+div.panel {
+    box-shadow: 1px 1px 2px 1px #ddd;
+}

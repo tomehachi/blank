@@ -1,0 +1,29 @@
+#wiki > h1 {
+    font-size: 32px;
+    font-weight: bold;
+
+    border-bottom-color: #aaa;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+
+    border-left-color: #aaa;
+    border-left-width: 2px;
+    border-left-style: solid;
+
+    padding-left: 8px;
+}
+
+#wiki > h2 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom-color: #aaa;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    padding-left: 8px;
+}
+
+#wiki > h3 {
+    border-bottom-color: #aaa;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
