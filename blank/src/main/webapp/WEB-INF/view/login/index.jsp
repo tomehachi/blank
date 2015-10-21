@@ -46,12 +46,12 @@
             </div>
         </div>
 
-        <s:form action="/remindPassword" method="POST" styleClass="form-horizontal" style="display: inline-block;">
-            <s:submit styleClass="btn btn-primary">パスワードを忘れた</s:submit>
+        <s:form action="/resetPassword" method="POST" styleClass="form-horizontal" style="display: inline-block;">
+            <s:submit styleClass="btn btn-default btn-xs">パスワードを忘れた</s:submit>
         </s:form>
 
         <s:form action="/mailAuth" method="POST" styleClass="form-horizontal" style="display: inline-block;">
-            <s:submit styleClass="btn btn-primary">アカウントを登録する</s:submit>
+            <s:submit styleClass="btn btn-default btn-xs">アカウントを登録する</s:submit>
         </s:form>
     </div>
 </div>
