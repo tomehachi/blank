@@ -39,8 +39,26 @@ public class SecurityUtil {
         return result.toString();
     }
 
-    public static void main(String...args) {
+    private static String[] CHARS = new String[]{
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+            "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+            "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
+    };
 
-        System.out.println(encode("admin"));
+    public static String randomString(int length) {
+        StringBuffer result = new StringBuffer();
+        for(int i=0; i<length; i++) {
+            result.append(
+                    CHARS[(int)Math.round( (double)(Math.random()*(CHARS.length - 1)) )]
+            );
+        }
+        return result.toString();
+    }
+
+    public static void main(String...args) {
+//        System.out.println(encode("admin"));
+        System.out.println(randomString(32));
     }
 }
