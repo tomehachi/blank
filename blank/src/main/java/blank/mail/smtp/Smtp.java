@@ -81,7 +81,7 @@ public class Smtp {
     public void sendMail(Object dto, String mailName) throws MailException {
         Class<?> dtoClass = dto.getClass();
 
-        session.setDebug(true);
+        session.setDebug(false);
 
         final MimeMessage message = new MimeMessage(session);
 
