@@ -88,7 +88,6 @@ public class AppRequestProcessor extends S2RequestProcessor {
         return false;
     }
 
-
     /**
      * ログインしているかどうかを返す.<br>
      *
@@ -148,6 +147,11 @@ public class AppRequestProcessor extends S2RequestProcessor {
      */
     @Override
     protected boolean processRoles(HttpServletRequest request, HttpServletResponse response, ActionMapping mapping) {
+        // 禁止UA
+        if(request.getHeader("user-agent").equals("Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20150101 Firefox/20.0 (Chrome)")) {
+            return false;
+        }
+
         // 公開エリアへのアクセスならばそのままServlet処理継続.
         if(targetHasAnnotation(PublicService.class)) {
             return true;
