@@ -1,6 +1,6 @@
 <tiles:insert template="/WEB-INF/view/common-1col/layout.jsp" flush="true">
 
-<tiles:put name="title" value="パスワードリマインダ" />
+<tiles:put name="title" value="パスワードリセット - 認証" />
 
 <tiles:put name="css" type="string">
 </tiles:put>
@@ -17,20 +17,20 @@
             <div class="panel-body">
                 <s:form action="/resetPassword/execute" method="POST" styleClass="form-horizontal">
                     <fieldset>
-                        <legend>パスワードリセット</legend>
+                        <legend>パスワードリセット - 認証</legend>
 
                         <div class="alert alert-dismissible alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>
-                            パスワードを忘れてしまった方は、以下のテキストボックスに、ご登録のメールアドレスを入力の上、「パスワードリセットの案内を送信」ボタンを押下してください。<br>
-                            パスワードリセットに関するご案内をご登録メールアドレスに送信いたします。<br>
+                                お送りしたメールに記載されていた認証キーを以下に入力し、「パスワードリセット」ボタンを押下して下さい。
                             </p>
-                            <p><strong>送信後、24時間は再送できませんので、ご了承下さい。</strong></p>
+                            <p><strong>パスワードリセットは1日に1回しかできませんので、ご注意下さい。</strong></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="mailAddr" class="col-lg-4 control-label">メールアドレス</label>
+                            <label for="authKey" class="col-lg-4 control-label">認証キー</label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="mailAddr" id="mailAddr" placeholder="メールアドレスを入力" autocomplete="off">
+                                <input type="text" class="form-control" name="authKey" id="authKey" placeholder="認証キーを入力" autocomplete="off">
                                 <html:errors property="mailAddr" />
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="col-lg-4">
                             </div>
                             <div class="col-lg-8">
-                                <s:submit styleClass="btn btn-primary">パスワードリセットの案内を送信</s:submit>
+                                <s:submit styleClass="btn btn-primary">パスワードリセット</s:submit>
                             </div>
                         </div>
                     </fieldset>
