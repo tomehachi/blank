@@ -93,7 +93,7 @@ public class ResetPasswordAction {
         ResetPasswordConfirmMailDto dto = new ResetPasswordConfirmMailDto(smtp.getMailEncode());
         try {
             dto
-            .addAddress(AddressType.FROM, "nakaoka@glodia.jp", "blank-mail")
+            .addAddress(AddressType.FROM, "email@test.com", "blank-mail")
             .addAddress(AddressType.TO, mailAddr, mailAddr);
 
             dto.authKey = authKey;
