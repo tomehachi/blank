@@ -15,7 +15,7 @@
     <div class="col-md-6 col-lg-offset-3">
         <div class="panel panel-primary">
             <div class="panel-body">
-               <div class="alert alert-dismissible alert-danger">
+               <div class="alert alert-dismissible alert-info">
                     <p>
                         サイトにご登録のメールアドレスが正しく入力されていた場合に限り、パスワードリセットのご案内が送信されます。<br>
                     </p>

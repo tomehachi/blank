@@ -19,7 +19,7 @@
                     <fieldset>
                         <legend>パスワードリセット</legend>
 
-                        <div class="alert alert-dismissible alert-danger">
+                        <div class="alert alert-dismissible alert-info">
                             <p>
                             パスワードを忘れてしまった方は、以下のテキストボックスに、ご登録のメールアドレスを入力の上、「パスワードリセットの案内を送信」ボタンを押下してください。<br>
                             パスワードリセットに関するご案内をご登録メールアドレスに送信いたします。<br>
