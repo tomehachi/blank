@@ -115,6 +115,6 @@ public class ResetPasswordAction {
     @PublicService
     @Execute(validator=false)
     public String showAuth() {
-        return "auth.jsp";
+        return "showAuth.jsp";
     }
 }
