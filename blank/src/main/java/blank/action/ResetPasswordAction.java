@@ -2,14 +2,20 @@ package blank.action;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.ResourceBundle;
 
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.seasar.extension.jdbc.JdbcManager;
+import org.seasar.extension.jdbc.where.SimpleWhere;
+import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
 import blank.annotation.PublicService;
 import blank.dto.ResetPasswordConfirmMailDto;
 import blank.entity.OnetimeKey;
 import blank.entity.UserAuth;
+import blank.form.AuthKeyForm;
 import blank.mail.AddressType;
 import blank.mail.MailException;
 import blank.mail.smtp.Smtp;
@@ -52,7 +58,8 @@ public class ResetPasswordAction {
 
         if(userAuth != null) {
             // ワンタイムパスワードを生成
-            String authKey = SecurityUtil.randomString(32);
+            String authKey = SecurityUtil.randomString(
+                    Integer.parseInt(ResourceBundle.getBundle("application").getString("setting.authKey.length")));
 
             // ユーザ認証情報のワンタイムレコード取得.
             OnetimeKey onetimeKey = onetimeKeyService.findById(userAuth.userId);
@@ -115,6 +122,47 @@ public class ResetPasswordAction {
     @PublicService
     @Execute(validator=false)
     public String showAuth() {
-        return "showAuth.jsp";
+        return "auth.jsp";
+    }
+
+    @ActionForm
+    public AuthKeyForm authKeyForm;
+
+    /**
+     * 認証キーバリデーション
+     *
+     * @return エラー
+     */
+    public ActionMessages validateAuthKey() {
+        ActionMessages errors = new ActionMessages();
+
+        /* -- 認証キーの長さチェック -------------------------------------------------------------------------------- */
+
+        int authKeyLength = Integer.parseInt(
+                ResourceBundle.getBundle("application").getString("setting.authKey.length"));
+
+        if(authKeyForm.authKey.length() != authKeyLength) {
+            errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.authKeyValidation"));
+        }
+
+        /* -- 認証キーの存在チェック -------------------------------------------------------------------------------- */
+
+        UserAuth userAuth = jdbcManager.from(UserAuth.class)
+                .leftOuterJoin("onetimeKey")
+                .where(new SimpleWhere()
+                    .eq("onetimeKey.onetimeKey", authKeyForm.authKey)
+                ).getSingleResult();
+
+        if(userAuth == null) {
+            errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.authKeyValidation"));
+        }
+
+        return errors;
+    }
+
+    @PublicService
+    @Execute(validator=true, validate="validateAuthKey", input="auth.jsp")
+    public String auth() {
+        return "reset.jsp";
     }
 }

@@ -1,6 +1,6 @@
 <tiles:insert template="/WEB-INF/view/common-1col/layout.jsp" flush="true">
 
-<tiles:put name="title" value="パスワードリセット - 認証" />
+<tiles:put name="title" value="パスワードリセット - 入力" />
 
 <tiles:put name="css" type="string">
 </tiles:put>
@@ -17,28 +17,33 @@
             <div class="panel-body">
                 <s:form action="/resetPassword/execute" method="POST" styleClass="form-horizontal">
                     <fieldset>
-                        <legend>パスワードリセット - 認証</legend>
+                        <legend>パスワードリセット - 入力</legend>
 
                         <div class="alert alert-dismissible alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>
-                                お送りしたメールに記載されていた認証キーを以下に入力し、「パスワードリセット」ボタンを押下して下さい。
+                                新しいパスワードを入力して下さい。
                             </p>
-                            <p><strong>パスワードリセットは1日に1回しかできませんので、ご注意下さい。</strong></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="authKey" class="col-lg-4 control-label">認証キー</label>
+                            <label for="password1" class="col-lg-4 control-label">パスワード</label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="authKey" id="authKey" placeholder="認証キーを入力" autocomplete="off">
-                                <html:errors property="mailAddr" />
+                                <input type="password" class="form-control" name="password1" id="password1" placeholder="パスワードを入力" autocomplete="off">
+                                <html:errors property="password1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="col-lg-4 control-label">パスワード確認</label>
+                            <div class="col-lg-8">
+                                <input type="password" class="form-control" name="password2" id="password2" placeholder="パスワードを入力" autocomplete="off">
+                                <html:errors property="password2" />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-4">
                             </div>
                             <div class="col-lg-8">
-                                <s:submit styleClass="btn btn-primary">パスワードリセット</s:submit>
+                                <s:submit styleClass="btn btn-danger">設定する</s:submit>
                             </div>
                         </div>
                     </fieldset>
